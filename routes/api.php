@@ -13,3 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
+//Productos
+Route::Apiresource('products', 'Products\ProductController');
+//orders
+// Route::Apiresource('orders', 'Orders\OrderController');
