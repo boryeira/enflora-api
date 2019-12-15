@@ -19,8 +19,10 @@ class ProductTransformer extends TransformerAbstract
             'name' => (string) $product->name,
             'img' => (string) $product->img, 
             'value' => (string)'$'.number_format($product->value, 0, ',', '.'),
-            'type' => (array) $product->type, 
-            'available' => (int) $product->available, 
+            // 'type' => (array) $product->type, 
+            // 'status' => (array) $product->status, 
+            // 'available' => (int) $product->available, 
+            
         ];
     }
 }
