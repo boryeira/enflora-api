@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Laravel\Passport\Passport::withoutCookieSerialization()
+        Laravel\Passport\Passport::withoutCookieSerialization();
     }
 }
