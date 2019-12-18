@@ -12,4 +12,8 @@ class ProductController extends ApiController
         $products = Product::all();
         return $this->showAll($products);
     }
+    public function active() {
+        $products = Product::where('status',1)->get();
+        return $this->showAll($products);
+    }
 }

@@ -19,6 +19,7 @@ class ProductTransformer extends TransformerAbstract
             'name' => (string) $product->name,
             'img' => (string) $product->img, 
             'value' => (string)'$'.number_format($product->value, 0, ',', '.'),
+            'status' => (array) $product->status, 
             // 'type' => (array) $product->type, 
             // 'status' => (array) $product->status, 
             // 'available' => (int) $product->available, 
@@ -33,6 +34,7 @@ class ProductTransformer extends TransformerAbstract
             'name' => 'name',
             'img' => 'img',
             'value' => 'value',
+            'status' => 'status'
 
         ];
 
@@ -46,6 +48,7 @@ class ProductTransformer extends TransformerAbstract
             'name' => 'name',
             'img' => 'img',
             'value' => 'value',
+            'status' => 'status'
         ];
 
         return isset($attributes[$index]) ? $attributes[$index] : null;
