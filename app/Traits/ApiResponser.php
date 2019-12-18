@@ -59,7 +59,7 @@ trait ApiResponser
 
 			if (isset($attribute, $value)) {
 
-				$collection = $collection->where($attribute, Carbon::parse($value));
+				$collection = $collection->where($attribute, $value);
 			}
 		}
 
