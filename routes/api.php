@@ -16,5 +16,6 @@ use Illuminate\Http\Request;
 //Productos
 Route::get('products/actives', 'Products\ProductController@actives');
 Route::Apiresource('products', 'Products\ProductController');
+Route::Apiresource('orders', 'Orders\OrderController');
 //orders
 // Route::Apiresource('orders', 'Orders\OrderController');
