@@ -10,7 +10,7 @@ use Response;
 class OrderController extends ApiController
 {
 
-    public function create(Request $request)
+    public function store(Request $request)
     {
         return Response()->json([
             'data' => 'llegueee!!',
