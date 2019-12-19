@@ -16,9 +16,12 @@ class OrderController extends ApiController
         $user = Auth::user();
         $items = $request->all();
 
-        return Response()->json([
-          'data' => $items,
-      ], 200);
+        if(count($items)<=0){
+          return Response()->json([
+            'error' => 'no se an ingresado productos',
+          ], 200);
+        }
+
 
         foreach($items as $item){
             
