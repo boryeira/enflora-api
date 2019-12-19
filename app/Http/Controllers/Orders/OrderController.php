@@ -13,7 +13,7 @@ class OrderController extends ApiController
     public function store(Request $request)
     {
         return Response()->json([
-            'data' => 'llegueee!!',
+            'data' => $request->all(),
         ]);
     }
 }
