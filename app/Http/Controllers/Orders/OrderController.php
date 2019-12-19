@@ -70,9 +70,7 @@ class OrderController extends ApiController
 
         $order->amount = $order->orderItems->sum('amount');
         if($order->save()) {
-          return Response()->json([
-                    'data' => $request->all(),
-                ], 200);
+          return $this->showOne($order);
         } else {
           return Response()->json([
                   'error' => 'error DB',
