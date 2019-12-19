@@ -15,6 +15,11 @@ class OrderController extends ApiController
     {
         $user = Auth::user();
         $items = $request->all();
+
+        return Response()->json([
+          'data' => $items,
+      ], 200);
+
         foreach($items as $item){
             
             $product = Product::find($item['id']);
@@ -31,41 +36,41 @@ class OrderController extends ApiController
           'data' => 'verificado',
       ], 200);
 
-        // $order = new Order;
-        // $order->user_id = $user->id;
-        // $order->quantity = array_sum($items);
-        // $order->status = 2;
-        // $order->save();
+        $order = new Order;
+        $order->user_id = $user->id;
+        $order->quantity = array_sum($items);
+        $order->status = 2;
+        $order->save();
   
-        // foreach ($items as $key => $q) {
-        //       $product = Product::find($key);
-        //       $item = new OrderItem;
-        //       $item->order_id = $order->id;
-        //       $item->name = $product->name;
-        //       $item->product_id = $product->id;
-        //       $item->quantity = $q;
-        //       $item->amount = $product->value*$q;
-        //       $item->unit = $product->unit['id'];
-        //       $item->status = 1;
-        //       $item->img = $product->img;
-        //       $item->save();
-        //       $product->consumed = $product->consumed + $q;
-        //       if($product->available == 0){
-        //         $product->status = 2 ;
-        //       }
-        //       $product->save();
+        foreach ($items as $key => $q) {
+              $product = Product::find($key);
+              $item = new OrderItem;
+              $item->order_id = $order->id;
+              $item->name = $product->name;
+              $item->product_id = $product->id;
+              $item->quantity = $q;
+              $item->amount = $product->value*$q;
+              $item->unit = $product->unit['id'];
+              $item->status = 1;
+              $item->img = $product->img;
+              $item->save();
+              $product->consumed = $product->consumed + $q;
+              if($product->available == 0){
+                $product->status = 2 ;
+              }
+              $product->save();
             
-        // }
+        }
 
-        // $order->amount = $order->orderItems->sum('amount');
-        // if($order->save()) {
-        //   return Redirect::route('orders.index');
-        // } else {
-        //   return Redirect::back()->withErrors(array('db' => 'error en base de datos'));
-        // }
+        $order->amount = $order->orderItems->sum('amount');
+        if($order->save()) {
+          return Redirect::route('orders.index');
+        } else {
+          return Redirect::back()->withErrors(array('db' => 'error en base de datos'));
+        }
 
-        // return Response()->json([
-        //     'data' => $request->all(),
-        // ], 200);
+        return Response()->json([
+            'data' => $request->all(),
+        ], 200);
     }
 }
