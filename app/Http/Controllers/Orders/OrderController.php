@@ -24,7 +24,10 @@ class OrderController extends ApiController
 
 
         foreach($items as $item){
-            
+          return Response()->json([
+            'error' => $item,
+          ], 200);
+
             $product = Product::find($item['id']);
             
             if($product->available < $item['quantity'])
