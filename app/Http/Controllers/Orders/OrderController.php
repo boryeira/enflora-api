@@ -23,9 +23,10 @@ class OrderController extends ApiController
           ], 200);
         }
 
-
+        $total = 0;
         foreach($items as $item){
           $product = Product::find($item['id']);
+          $total = $total + $item['quantity']*$product->value;
           if($product->available < $item['quantity'])
           {
             return Response()->json([
@@ -33,6 +34,10 @@ class OrderController extends ApiController
             ], 400);
           }
         }
+
+        return Response()->json([
+          'data' => 'total: '.$total,
+      ], 200);
 
         $order = new Order;
         $order->user_id = $user->id;
