@@ -3,9 +3,12 @@
 namespace App\Models\Orders;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Transformers\OrderItemTransformer;
+
 
 class OrderItem extends Model
 {
+  public $transformer = OrderItemTransformer::class;
   public function getUnitAttribute($value)
   {
     $rawStatus = [
@@ -17,11 +20,11 @@ class OrderItem extends Model
   
   public function product()
   {
-      return $this->belongsTo('App\Models\Product\Product');
+      return $this->belongsTo('App\Models\Products\Product');
   }
   
   public function order()
   {
-      return $this->belongsTo('App\Models\Order\Order');
+      return $this->belongsTo('App\Models\Orders\Order');
   }
 }

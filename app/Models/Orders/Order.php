@@ -3,11 +3,11 @@
 namespace App\Models\Orders;
 
 use Illuminate\Database\Eloquent\Model;
-//use App\Transformers\OrderTransformer;
+use App\Transformers\OrderTransformer;
 
 class Order extends Model
 {
-  //public $transformer = OrderTransformer::class;
+  public $transformer = OrderTransformer::class;
   protected $dates = [
       'delivery_date','pay_date'
   ];
@@ -29,12 +29,12 @@ class Order extends Model
 
   public function user()
   {
-      return $this->belongsTo('App\Models\User\User');
+      return $this->belongsTo('App\Models\Users\User');
   }
 
   public function orderItems()
   {
-    return $this->hasMany('App\Models\Order\OrderItem');
+    return $this->hasMany('App\Models\Orders\OrderItem');
   }
 
 
