@@ -25,23 +25,14 @@ class OrderController extends ApiController
 
 
         foreach($items as $item){
-          return Response()->json([
-            'error' => $item['id'].' - '.$item['quantity'],
-          ], 200);
-
-            $product = Product::find($item['id']);
-            
-            if($product->available < $item['quantity'])
-            {
-                return Response()->json([
-                    'error' => $product->name.' supera el stock disponible.',
-                ], 400);
-            }
+          $product = Product::find($item['id']);
+          if($product->available < $item['quantity'])
+          {
+            return Response()->json([
+                'error' => $product->name.' supera el stock disponible.',
+            ], 400);
+          }
         }
-
-        return Response()->json([
-          'data' => 'verificado',
-      ], 200);
 
         $order = new Order;
         $order->user_id = $user->id;
