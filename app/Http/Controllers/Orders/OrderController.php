@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Orders;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use App\Models\Order\Order;
+use App\Models\Products\Product;
 use Response;
 use Auth;
 
@@ -25,7 +26,7 @@ class OrderController extends ApiController
 
         foreach($items as $item){
           return Response()->json([
-            'error' => $item,
+            'error' => $item['id'].' - '.$item['quantity'],
           ], 200);
 
             $product = Product::find($item['id']);
