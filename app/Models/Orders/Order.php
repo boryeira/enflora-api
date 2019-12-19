@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Order;
+namespace App\Models\Orders;
 
 use Illuminate\Database\Eloquent\Model;
 //use App\Transformers\OrderTransformer;
