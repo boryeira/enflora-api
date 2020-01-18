@@ -13,9 +13,14 @@ class User extends Authenticatable
     use HasApiTokens, Notifiable;
     public $transformer = UserTransformer::class;
 
-    // public function orders()
-    // {
-    //     return $this->hasMany('App\Models\Orders\Order');
-    // }
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Orders\Order');
+    }
+
+    public function activeOrders()
+    {
+        return $this->hasMany('App\Models\Orders\Order')->where('delivery_date',null);
+    }
 
 }

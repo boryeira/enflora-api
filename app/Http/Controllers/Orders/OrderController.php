@@ -13,6 +13,30 @@ use Auth;
 class OrderController extends ApiController
 {
 
+  public function index()
+  {
+      $orders = Auth::user()->orders;
+      return $this->showOne($order);
+  }
+
+  public function actives()
+  {
+      $orders = Auth::user()->orders;
+      return $this->showOne($order);
+  }
+
+  public function show(Order $order)
+  {
+      return $this->showOne($order);
+  }
+
+  public function items(Order $order)
+  {
+      return $this->showAll($order->orderItems);
+  }
+
+
+
     public function store(Request $request)
     {
         $user = Auth::user();
@@ -80,16 +104,6 @@ class OrderController extends ApiController
 
     }
 
-    public function show(Order $order)
-    {
-        return $this->showOne($order);
-    }
-
-    public function items(Order $order)
-    {
-        return $this->showAll($order->orderItems);
-    }
-
     public function destroy(Order $order)
     {
         $order->delete();
@@ -97,4 +111,5 @@ class OrderController extends ApiController
             'data' => 'deleted',
         ]);
     }
+
 }
