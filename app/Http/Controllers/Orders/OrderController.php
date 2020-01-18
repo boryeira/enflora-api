@@ -16,13 +16,13 @@ class OrderController extends ApiController
   public function index()
   {
       $orders = Auth::user()->orders;
-      return $this->showOne($order);
+      return $this->showAll($orders);
   }
 
   public function actives()
   {
       $orders = Auth::user()->orders;
-      return $this->showOne($order);
+      return $this->showAll($orders);
   }
 
   public function show(Order $order)
