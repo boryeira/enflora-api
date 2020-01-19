@@ -20,6 +20,7 @@ class OrderItemTransformer extends TransformerAbstract
             'amount' => (string)'$'.number_format($order_item->amount, 0, ',', '.'),
             'amountRaw' => (int)$order_item->amount,
             'img' => (string)$order_item->img,
+            'quantity' => (string)$order_item->quantity,
             // 'unit' => (string)$order_item->unit,
             
             // 'product' => [
