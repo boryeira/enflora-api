@@ -104,12 +104,21 @@ class OrderController extends ApiController
 
     }
 
+
     public function destroy(Order $order)
     {
-        $order->delete();
-        return response()->json([
-            'data' => 'deleted',
-        ]);
+      foreach ($order->orderItems as $item) {
+        $product = $item->product;
+        $product->consumed = $product->consumed - $item->quantity;
+        $product->save();
+        $item->delete();
+      }
+      $order->delete();
+      return response()->json([
+        'data' => 'deleted',
+      ]);
     }
+
+
 
 }
