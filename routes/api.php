@@ -20,5 +20,6 @@ Route::Apiresource('products', 'Products\ProductController');
 Route::get('orders/actives', 'Orders\OrderController@actives');
 Route::Apiresource('orders', 'Orders\OrderController');
 Route::get('/orders/{order}/items','Orders\OrderController@items')->name('orders.items');
+Route::get('/orders/{order}/pay','Flow\FlowController@orderpay')->name('orders.pay');
 //orders
 // Route::Apiresource('orders', 'Orders\OrderController');
