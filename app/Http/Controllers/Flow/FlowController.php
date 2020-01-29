@@ -54,4 +54,36 @@ class FlowController extends Controller
 
     }
 
+    public function returnFlow(Request $request)
+    {
+      $payment = $this->flow->payment()->get($request->token);
+      $paymentData = $payment->paymentData;
+      $order = Order::find($payment->commerceOrder);
+      if($order->status['id']==3)
+      {
+        return view('flow.return');
+      }
+      else 
+      {
+        return view('flow.error');
+      }
+      
+    }
+
+    public function confirmFlow(Request $request)
+    {
+      $payment = $this->flow->payment()->get($request->token);
+      $paymentData = $payment->paymentData;
+      $order = Order::find($payment->commerceOrder);
+      if($order->status['id']==2)
+      {
+        $order->status = 3;
+        $order->save();
+
+      }
+      return Response()->json([
+                  'data' => 'ok',
+              ], 200);
+    }
+
 }
