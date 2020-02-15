@@ -63,7 +63,8 @@
 
                     Gracias!
                 </div>
-                <div class="alert alert-success">El pago se realizo con éxito</div>
+                <div class="alert alert-success">El pago se realizo con éxito</div><br><br>
+                <div class="alert alert-success">Puede cerrar esta ventana</div>
             </div>
         </div>
     </body>

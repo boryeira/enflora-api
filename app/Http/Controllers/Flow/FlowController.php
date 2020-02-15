@@ -59,7 +59,7 @@ class FlowController extends Controller
       $payment = $this->flow->payment()->get($request->token);
       $paymentData = $payment->paymentData;
       $order = Order::find($payment->commerceOrder);
-      if($order->status['id']==3)
+      if(($order->status['id']==3))
       {
         return view('flow.return');
       }
@@ -75,11 +75,11 @@ class FlowController extends Controller
       $payment = $this->flow->payment()->get($request->token);
       $paymentData = $payment->paymentData;
       $order = Order::find($payment->commerceOrder);
-      if($order->status['id']==2)
+      if(($order->status['id']==2) && ($paymentData['date']!=null))
       {
         $order->status = 3;
+        $order->pay_date = today();
         $order->save();
-
       }
       return Response()->json([
                   'data' => 'ok',
