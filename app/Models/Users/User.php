@@ -25,7 +25,7 @@ class User extends Authenticatable
 
     public function prescriptions()
     {
-        return $this->hasMany('App\Models\User\Prescription');
+        return $this->hasMany('App\Models\Users\Prescription');
     }
 
     // public function activePrescription()
