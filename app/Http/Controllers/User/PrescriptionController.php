@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use App\Models\Users\Prescription;
 use Redirect;
 use Auth;
@@ -14,7 +14,7 @@ use Validator;
 
 
 
-class PrescriptionController extends Controller
+class PrescriptionController extends ApiController
 {
 
   public function index()
