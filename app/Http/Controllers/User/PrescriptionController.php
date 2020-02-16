@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\User\Prescription;
+use App\Models\Users\Prescription;
 use Redirect;
 use Auth;
 // use Session;
