@@ -19,8 +19,9 @@ class PrescriptionController extends Controller
 
   public function index()
   {
-      $prescription = Auth::user()->prescriptions;
-      return $this->showAll($prescription);
+      $user = Auth::user();
+      $prescriptions = $user->prescriptions;
+      return $this->showAll($prescriptions);
   }
 
   public function store(Request $request)
