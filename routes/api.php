@@ -26,5 +26,6 @@ Route::get('/orders/{order}/pay','Flow\FlowController@orderpay')->name('orders.p
 
 //User
 Route::post('fcm/token', 'User\UserController@fcmToken');
+Route::get('profile/prescriptions', 'User\PrescriptionController@index');
 
 
