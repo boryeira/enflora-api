@@ -12,7 +12,7 @@ class UserController extends Controller
 
     public function fcmToken(Request $request)
     {
-
+        dd($request);
       Auth::user()->fcm_token = $request->fcmtoken;
       if(Auth::user()->save()){
         return response()->json('guardado-'.Auth::user()->fcm_token.' enviado:'.$request->fcmtoken.'request:'.$request->toJson(), 200);
