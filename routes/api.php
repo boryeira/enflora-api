@@ -25,6 +25,6 @@ Route::get('/orders/{order}/pay','Flow\FlowController@orderpay')->name('orders.p
 // Route::Apiresource('orders', 'Orders\OrderController');
 
 //User
-Route::post('fcm/token', 'Users\UserController@fcmToken');
+Route::post('fcm/token', 'User\UserController@fcmToken');
 
 
