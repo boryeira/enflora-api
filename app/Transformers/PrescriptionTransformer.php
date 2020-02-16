@@ -17,8 +17,8 @@ class PrescriptionTransformer extends TransformerAbstract
         return [
             'id' => (int)$prescription->id,
             'userId' => (int)$prescription->user_id,
-            'start' => (string)$prescription->start->format('d-m-Y'),
-            'end' => (string)$prescription->end->format('d-m-Y'),
+            'start' => isset($prescription->start) ? (string)$prescription->start->format('d-m-Y') : null, 
+            'end' => isset($prescription->end) ? (string)$prescription->end->format('d-m-Y') : null, 
             'monthly' => (int)$prescription->monthly,
             'file' => (string)$prescription->file,
             'status' => (array)$prescription->status
