@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function activePrescription()
     {
-        return $this->hasOne('App\Models\User\Prescription')->where('status','!=',3);
+        return $this->hasOne('App\Models\Users\Prescription')->where('status','!=',3);
     }
     // public function revPrescription()
     // {
