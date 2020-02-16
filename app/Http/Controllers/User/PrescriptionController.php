@@ -20,9 +20,7 @@ class PrescriptionController extends ApiController
   public function index()
   {
       $user = Auth::user();
-      dd($user->prescriptions);
       $prescriptions = $user->prescriptions;
-
       return $this->showAll($prescriptions);
   }
 
