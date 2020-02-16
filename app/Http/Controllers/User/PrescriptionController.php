@@ -5,13 +5,13 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 use App\Models\Users\Prescription;
-use Redirect;
+// use Redirect;
 use Auth;
 use Response;
 // use Session;
 use Validator;
-// use Storage;
-// use Image;
+use Storage;
+use Image;
 
 
 
@@ -45,26 +45,20 @@ class PrescriptionController extends ApiController
     ]);
 
     if ($validator->fails()) {
-        return redirect::back()
-                    ->withErrors($validator)
-                    ->withInput();
-    }
-
-    if($request->prescription) {
+      return response()->json(['error' => 'imagen no valida'], 400 );
+    } else {
       $prescription = new Prescription;
       $prescription->user_id = Auth::user()->id;
       $prescription->status = 1;
       $prescription->save();
 
-      // $resize = Image::make($request->prescription)->encode('jpg');
-      // $storage = Storage::put('public/user/'.Auth::user()->id.'/'.$prescription->id.'.jpg', $resize);
-      // $prescription->file = url('/').'/storage/user/'.Auth::user()->id.'/'.$prescription->id.'.jpg';
-      // $prescription->save();
-      // Session::flash('success','Receta medica subida con éxito. Nos comunicaremos con usted cuando este validada.');
-      // return Redirect::route('prescription.show');
-    } else {
-      // return Redirect::back()->withErrors(array('notfound' => 'Debe ser un archivo valido.'));
+      $resize = Image::make($request->prescription)->encode('jpg');
+      $storage = Storage::put('public/user/'.Auth::user()->id.'/prescription/'.$prescription->id.'.jpg', $resize);
+      $prescription->file = url('/').'/storage/user/'.Auth::user()->id.'/prescription/'.$prescription->id.'.jpg';
+      $prescription->save();
+      return $this->showOne($prescription);
     }
+
   }
 
 

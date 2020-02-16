@@ -12,6 +12,7 @@
         "darkghosthunter/flow-sdk": "^1.1",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "6.3.3",
+        "intervention/image": "^2.5",
         "laravel/framework": "^6.2",
         "laravel/passport": "^8.0",
         "laravel/tinker": "^1.0",
