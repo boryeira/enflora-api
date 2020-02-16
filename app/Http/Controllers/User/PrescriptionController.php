@@ -7,6 +7,7 @@ use App\Http\Controllers\ApiController;
 use App\Models\Users\Prescription;
 use Redirect;
 use Auth;
+use Response;
 // use Session;
 use Validator;
 // use Storage;
@@ -28,7 +29,12 @@ class PrescriptionController extends ApiController
   {
       $user = Auth::user();
       $prescription = $user->activePrescription;
-      return $this->showOne($prescription);
+      if($prescription) {
+        return $this->showOne($prescription);
+      } else {
+        return response()->json(null, 200);
+      }
+      
   }
 
   public function store(Request $request)
