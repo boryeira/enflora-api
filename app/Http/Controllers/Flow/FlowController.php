@@ -74,13 +74,17 @@ class FlowController extends Controller
     {
       $payment = $this->flow->payment()->get($request->token);
       $paymentData = $payment->paymentData;
-      $order = Order::find($payment->commerceOrder);
-      if(($order->status['id']==2) && ($paymentData['date']!=null))
-      {
-        $order->status = 3;
-        $order->pay_date = today();
-        $order->save();
+
+      if(($paymentData['date'])){
+        $order = Order::find($payment->commerceOrder);
+        if($order->status['id']==2)
+        {
+          $order->status = 3;
+          $order->pay_date = today();
+          $order->save();
+        }
       }
+
       return Response()->json([
                   'data' => 'ok',
               ], 200);
