@@ -4,10 +4,12 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
+use Response;
 
 class UserController extends Controller
 {
-    
+
     public function fcmToken(Request $request)
     {
 
