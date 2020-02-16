@@ -24,6 +24,13 @@ class PrescriptionController extends ApiController
       return $this->showAll($prescriptions);
   }
 
+  public function active()
+  {
+      $user = Auth::user();
+      $prescription = $user->activePrescription;
+      return $this->showOne($prescription);
+  }
+
   public function store(Request $request)
   {
 

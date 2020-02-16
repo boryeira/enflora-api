@@ -13,6 +13,7 @@ class Prescription extends Model
   protected $dates = [
       'start','end'
   ];
+  
   public function getStatusAttribute($value)
   {
     $rawType = [

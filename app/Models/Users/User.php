@@ -28,10 +28,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Users\Prescription');
     }
 
-    // public function activePrescription()
-    // {
-    //     return $this->hasOne('App\Models\User\Prescription')->whereDate('start', '<=', now())->whereDate('end' ,'>=' , now())->where('status',2);
-    // }
+    public function activePrescription()
+    {
+        return $this->hasOne('App\Models\User\Prescription')->where('status','!=',3);
+    }
     // public function revPrescription()
     // {
     //     return $this->hasMany('App\Models\User\Prescription')->where('status',1);
