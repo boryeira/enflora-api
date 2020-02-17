@@ -32,7 +32,7 @@ class PrescriptionController extends ApiController
       if($prescription) {
         return $this->showOne($prescription);
       } else {
-        return response()->json(null, 200);
+        return response()->json(['data'=>null]), 200);
       }
       
   }
